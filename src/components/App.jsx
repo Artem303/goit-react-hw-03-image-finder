@@ -46,7 +46,10 @@ class App extends React.Component {
         .finally(() => this.setState({ loader: false }));
     }
 
-    if (prevState.page !== this.state.page) {
+    if (
+      (prevState.page !== this.state.page) &
+      (prevState.searchQuery === this.state.searchQuery)
+    ) {
       this.setState({ loader: true });
       getImages(this.state.searchQuery, this.state.page)
         .then(resp => {
